@@ -1,0 +1,34 @@
+import React from "react";
+import { Typography } from "@mui/material";
+
+import PropTypes from "prop-types";
+
+const STYLE_WARD_NUM = {
+  fontSize: "50%",
+  color: "#888",
+};
+
+const STYLE_WARD_NAME_ONLY = {
+  fontSize: "100%",
+  color: "#000",
+};
+
+WardName.propTypes = {
+  wardName: PropTypes.string,
+};
+
+export default function WardName({ wardName }) {
+  const words = wardName.split("-");
+  const wardNum = parseInt(words[0]);
+  const wardNameOnly = words.slice(1).join(" ");
+  return (
+    <div>
+      <div>
+        <Typography sx={STYLE_WARD_NUM}>Ward {wardNum}</Typography>
+      </div>
+      <div>
+        <Typography sx={STYLE_WARD_NAME_ONLY}>{wardNameOnly}</Typography>
+      </div>
+    </div>
+  );
+}
