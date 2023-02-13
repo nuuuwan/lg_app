@@ -3,6 +3,8 @@ import { Box, Typography , List, ListItem, ListItemText} from "@mui/material";
 import WardName from "../atoms/WardName";
 import PropTypes from "prop-types";
 
+import './WardCandidateView.css';
+
 WardCandidateView.propTypes = {
   wardName: PropTypes.string,
   partyNameToNames: PropTypes.object,
@@ -51,8 +53,13 @@ function renderName(name) {
     const firstNames = words.slice(0, -1).join(' ');
     const lastName = words.slice(-1)[0].toUpperCase();
 
+    const onClick = function() {
+      const url= `https://www.google.com/search?q=${name}`;
+      location.href = url; 
+    }
+
     return (
-        <td>
+        <td onClick={onClick} className="td-clickable">
         <Typography component="span" sx={STYLE_LAST_NAME}>
             {lastName +', '}
         </Typography>
@@ -104,7 +111,7 @@ export default function WardCandidateView({ wardName, partyNameToNames }) {
           {Object.entries(partyNameToNames).map(function ([partyName, names]) {
             const backgroundColor = getPartyColor(partyName);
             const style = { ...STYLE_TD, ...{backgroundColor} };
-            const key = partyName;
+            const key = wardName + '-' + partyName;
             return (
               <tr key={key} style={STYLE_TR}>
                 <td style={style}>
