@@ -21,13 +21,18 @@ const STYLE_BULLET = {
 
 
 function getPartyColor(partyName) {
-    return {
-        'SLPP': '#800',
-        'JJB': '#f00',
-        'UNP': '#080',
-        'SJB': '#4c0',
-        'SLFP': '#008',
-    }[partyName] || "white";
+    const h = {
+        'SLPP': 0,
+        'JJB': 0,
+        'UNP': 120,
+        'SJB': 105,
+        'SLFP': 240,
+    }[partyName];
+
+    if (h === undefined) {
+      return 'white';
+    }
+    return `hsla(${h}, 100%, 50%, 0.1)`;
 }
 
 
@@ -47,66 +52,73 @@ function renderName(name) {
     const lastName = words.slice(-1)[0].toUpperCase();
 
     return (
-        <ListItemText>
+        <td>
         <Typography component="span" sx={STYLE_LAST_NAME}>
             {lastName +', '}
         </Typography>
         <Typography component="span" sx={STYLE_FIRST_NAMES}>
             {firstNames}
         </Typography>
-        </ListItemText>
+        </td>
     )
 }
 
 
 function renderNames(names) {
     return (
-        <List disablePadding >
+        <table><tbody>
             {
                 names.map(
                     function(name) {
                         const key = name;
                         return (
-                            <ListItem key={key} button={true}> {renderName(name)}</ListItem>
+                            <tr key={key}> {renderName(name)}</tr>
                         )
                     }
                 )
             }
-        </List>
+        </tbody></table>
     )
 }
 
+
+const STYLE_TR = {
+  padding: 0,
+  margin: 0,
+  paddingRight: 2,
+  border: 'none',
+}
 
 const STYLE_TD = {
   padding: 0,
   margin: 0,
   paddingRight: 2,
+  border: 'none',
 }
 
 export default function WardCandidateView({ wardName, partyNameToNames }) {
   return (
     <Box sx={STYLE}>
       <Typography variant="h5">{<WardName wardName={wardName} />}</Typography>
-      <List >
+      <table ><tbody>
           {Object.entries(partyNameToNames).map(function ([partyName, names]) {
-            const key = "party-" + partyName;
             const backgroundColor = getPartyColor(partyName);
-            const styleBullet = Object.assign({}, STYLE_BULLET, {backgroundColor} );
+            const style = { ...STYLE_TD, ...{backgroundColor} };
+            const key = partyName;
             return (
-              <ListItem key={key} >
-                <span style={styleBullet} />
-                <span style={STYLE_TD}>
-                  <Typography key={key} variant="body1">
+              <tr key={key} style={STYLE_TR}>
+                <td style={style}>
+                  <Typography variant="body1">
                     {partyName}
                   </Typography>
-                </span>
-                <span style={STYLE_TD}>
+                </td>
+                <td style={style}>
                   {renderNames(names)}
-                </span>
-              </ListItem>
+                </td>
+              </tr>
             );
           })}
-      </List>
+      </tbody></table>
     </Box>
   );
 }
