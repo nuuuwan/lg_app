@@ -18,6 +18,10 @@ WardName.propTypes = {
 };
 
 export default function WardName({ wardName }) {
+  if (wardName === 'None') {
+    return 'Proportional List';
+  }
+
   const words = wardName.split("-");
   const wardNum = parseInt(words[0]);
   const wardNameOnly = words.slice(1).join(" ");
