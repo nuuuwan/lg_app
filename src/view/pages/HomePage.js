@@ -107,7 +107,7 @@ export default class HomePage extends Component {
             onChangeLGID={this.onChangeLGID.bind(this)}
             latLng={latLng}
           />
-          <Typography style={{fontSize: "80%"}}>
+          <Typography style={{ fontSize: "80%" }}>
             2023 Sri Lanka Local Authority Elections
           </Typography>
         </Box>

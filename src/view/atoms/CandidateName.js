@@ -5,11 +5,13 @@ import "./Clickable.css";
 const STYLE_FIRST_NAMES = {
   color: "#888",
   fontSize: "50%",
+  fontFamily: "Urbanist",
 };
 
 const STYLE_LAST_NAME = {
   color: "#000",
   fontSize: "80%",
+  fontFamily: "Urbanist",
 };
 
 const STYLE_TD = {

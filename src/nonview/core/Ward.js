@@ -1,9 +1,9 @@
 import { WWW } from "@nuuuwan/utils-js-dev";
 
-import Person2Icon from '@mui/icons-material/Person2';
-import GroupIcon from '@mui/icons-material/Group';
-import Groups2Icon from '@mui/icons-material/Groups2';
-import ListIcon from '@mui/icons-material/List';
+import Person2Icon from "@mui/icons-material/Person2";
+import GroupIcon from "@mui/icons-material/Group";
+import Groups2Icon from "@mui/icons-material/Groups2";
+import ListIcon from "@mui/icons-material/List";
 
 export const WARD_NUM_PR_LIST = 10_000;
 

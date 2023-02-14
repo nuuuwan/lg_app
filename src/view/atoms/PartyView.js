@@ -10,6 +10,7 @@ const STYLE = {
   fontSize: "80%",
   color: "gray",
   minWidth: 48,
+  fontFamily: "Urbanist",
 };
 
 const STYLE_IMG_SYMBOL = {

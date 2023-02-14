@@ -52,9 +52,10 @@ const STYLE_DIV_LG = {
   verticalAlign: "bottom",
 };
 
-function LGSelectorMenuItemContent({ lg, district }) {
-  const fontSize  = Math.min(30, 500 / lg.name.length)
-  const styleCustom = {fontSize};
+function LGSelectorMenuItemContent({ lg, district, selectedLGID }) {
+  const isSelected = selectedLGID === lg.id;
+  const fontSize = isSelected ? Math.min(30, 500 / lg.name.length) : 20;
+  const styleCustom = { fontSize };
   return (
     <div>
       <div style={STYLE_DIV_DISTRICT}>{district.name + " District"}</div>
@@ -62,7 +63,9 @@ function LGSelectorMenuItemContent({ lg, district }) {
         <span style={STYLE_SPAN_LG_ICON}>
           <lg.Icon style={STYLE_LG_ICON} />
         </span>
-        <span style={{...STYLE_SPAN_LG_NAME_ONLY, ...styleCustom}}>{lg.name + " "}</span>        
+        <span style={{ ...STYLE_SPAN_LG_NAME_ONLY, ...styleCustom }}>
+          {lg.name + " "}
+        </span>
       </div>
     </div>
   );
@@ -139,7 +142,11 @@ export default class LGSelector extends Component {
             const district = districtIdx[lg.districtID];
             return (
               <MenuItem key={key} value={lg.id}>
-                <LGSelectorMenuItemContent lg={lg} district={district} />
+                <LGSelectorMenuItemContent
+                  lg={lg}
+                  district={district}
+                  selectedLGID={selectedLGID}
+                />
               </MenuItem>
             );
           })}

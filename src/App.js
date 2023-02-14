@@ -18,7 +18,7 @@ const THEME = createTheme({
   //   },
   // },
   typography: {
-    fontFamily: ["Bellota Text", "Ubuntu", "sans-serif"].join(","),
+    fontFamily: ["Urbanist", "Bellota Text", "Ubuntu", "sans-serif"].join(","),
     fontSize: 14,
   },
 });

@@ -2,10 +2,9 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { WARD_NUM_PR_LIST } from "../../nonview/core/Ward";
 
-
 const STYLE_DIV_INFO = {
-  color: "#888"
-}
+  color: "#888",
+};
 
 const STYLE_WARD_NUM = {
   fontSize: "50%",
@@ -21,7 +20,7 @@ const STYLE_WARD_NAME_ONLY = {
 const STYLE_ICON = {
   height: 12,
   color: "#888",
-}
+};
 
 export default function WardName({ ward }) {
   if (parseInt(ward.wardNum) === WARD_NUM_PR_LIST) {
@@ -39,10 +38,11 @@ export default function WardName({ ward }) {
     <div>
       <div style={STYLE_DIV_INFO}>
         <span>
-          <ward.Icon style={STYLE_ICON} />                  
+          <ward.Icon style={STYLE_ICON} />
         </span>
         <span style={STYLE_WARD_NUM}>
-          Ward{" " + ward.wardNum + " · "}{memberText}
+          Ward{" " + ward.wardNum + " · "}
+          {memberText}
         </span>
       </div>
       <div>
