@@ -1,5 +1,6 @@
 import React from "react";
 import WardCandidateView from "./WardCandidateView";
+import { WARD_NUM_PR_LIST } from "../../nonview/core/Ward";
 
 export default function LGCandidateView({ candidateList, wardIdx }) {
   const idx = candidateList.reduce(function (idx, candidate) {
@@ -19,7 +20,15 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
     [wardNumA, _],
     [wardNumB, __]
   ) {
-    return wardNumA - wardNumB;
+    if (parseInt(wardNumA) === WARD_NUM_PR_LIST) {
+      return 1;
+    }
+    if (parseInt(wardNumB) === WARD_NUM_PR_LIST) {
+      return -1;
+    }
+    const wardA = wardIdx[wardNumA];
+    const wardB = wardIdx[wardNumB];
+    return wardA.wardName.localeCompare(wardB.wardName);
   });
 
   return sortedEntries.map(function ([wardNum, partyNameToNames]) {

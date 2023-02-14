@@ -1,5 +1,10 @@
 import { WWW } from "@nuuuwan/utils-js-dev";
 
+import Person2Icon from '@mui/icons-material/Person2';
+import GroupIcon from '@mui/icons-material/Group';
+import Groups2Icon from '@mui/icons-material/Groups2';
+import ListIcon from '@mui/icons-material/List';
+
 export const WARD_NUM_PR_LIST = 10_000;
 
 const URL_BASE = [
@@ -17,6 +22,18 @@ export default class Ward {
     this.wardNum = wardNum;
     this.wardName = wardName;
     this.numMembers = numMembers;
+  }
+
+  get Icon() {
+    if (this.wardNum === WARD_NUM_PR_LIST) {
+      return ListIcon;
+    } else if (this.numMembers === 1) {
+      return Person2Icon;
+    } else if (this.numMembers === 2) {
+      return GroupIcon;
+    } else {
+      return Groups2Icon;
+    }
   }
 
   static fromDict(d) {

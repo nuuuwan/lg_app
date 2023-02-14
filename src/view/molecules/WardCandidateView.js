@@ -4,13 +4,13 @@ import WardName from "../atoms/WardName";
 
 import Party from "../../nonview/core/Party";
 import PartyView from "../atoms/PartyView";
+import ShowHide from "../organisms/ShowHide";
 
 import CandidateNameList from "./CandidateNameList";
 import CompactList from "./CompactList";
 
 const STYLE = {
-  padding: 10,
-  marginBottom: 10,
+  marginBottom: 3,
   width: "90%",
 };
 
@@ -19,24 +19,26 @@ export default function WardCandidateView({ wardNum, ward, partyNameToNames }) {
 
   return (
     <Box style={STYLE}>
-      <Typography variant="h5">
-        <WardName ward={ward} />
-      </Typography>
-      <CompactList>
-        {partyNames.map(function (partyName) {
-          const names = partyNameToNames[partyName];
-          const key = wardNum + "-" + partyName;
-          const backgroundColor = new Party(partyName).color;
-          return [
-            <td key={key + "party"}>
-              <PartyView partyName={partyName} />
-            </td>,
-            <td key={key + "name"}>
-              <CandidateNameList names={names} style={{ backgroundColor }} />
-            </td>,
-          ];
-        })}
-      </CompactList>
+      <ShowHide>
+        <Typography variant="h5">
+          <WardName ward={ward} />
+        </Typography>
+        <CompactList>
+          {partyNames.map(function (partyName) {
+            const names = partyNameToNames[partyName];
+            const key = wardNum + "-" + partyName;
+            const backgroundColor = new Party(partyName).color;
+            return [
+              <td key={key + "party"}>
+                <PartyView partyName={partyName} />
+              </td>,
+              <td key={key + "name"}>
+                <CandidateNameList names={names} style={{ backgroundColor }} />
+              </td>,
+            ];
+          })}
+        </CompactList>
+      </ShowHide>
     </Box>
   );
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import CustomBottomNavigation from "../organisms/CustomBottomNavigation";
 import LGCandidateView from "../molecules/LGCandidateView";
 
@@ -24,11 +24,11 @@ const STYLE_HEADER = {
 };
 
 const STYLE_BODY = {
-  padding: 10,
+  padding: 20,
   position: "fixed",
   top: 100,
   bottom: 48,
-  width: "100%",
+  width: "90%",
   overflow: "scroll",
 };
 
@@ -85,7 +85,11 @@ export default class HomePage extends Component {
       return <CircularProgress />;
     }
 
-    return <LGCandidateView candidateList={candidateList} wardIdx={wardIdx} />;
+    return (
+      <Box>
+        <LGCandidateView candidateList={candidateList} wardIdx={wardIdx} />
+      </Box>
+    );
   }
 
   render() {
