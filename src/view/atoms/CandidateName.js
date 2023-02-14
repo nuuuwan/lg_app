@@ -1,5 +1,6 @@
 import React from "react";
 import {DEFAULT_FONT_FAMILY} from "./DefaultStyles";
+import PersonName from "../../nonview/core/PersonName";
 import "./Clickable.css";
 
 
@@ -22,9 +23,9 @@ const STYLE_TD = {
 };
 
 export default function CandidateName({ name }) {
-  const words = name.split(" ");
-  const firstNames = words.slice(0, -1).join(" ");
-  const lastName = words.slice(-1)[0].toUpperCase();
+  const personName = new PersonName(name);
+  const firstNames = personName.firstNames;
+  const lastName = personName.lastName.toUpperCase();
 
   const onClick = function () {
     const search_query = `${name} Sri Lanka`;
