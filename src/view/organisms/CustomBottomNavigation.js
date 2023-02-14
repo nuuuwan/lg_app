@@ -12,10 +12,14 @@ const STYLE = {
 
 export default class CustomBottomNavigation extends Component {
   render() {
+    const onClickRefresh = function() {
+      location.reload(); 
+    }
+
     return (
       <Box sx={STYLE}>
         <BottomNavigation>
-          <BottomNavigationAction icon={<Refresh />} />
+          <BottomNavigationAction icon={<Refresh />}  onClick={onClickRefresh}/>
         </BottomNavigation>
       </Box>
     );
