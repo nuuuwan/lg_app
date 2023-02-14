@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const STYLE_TR = {
   padding: 0,
@@ -7,17 +7,13 @@ const STYLE_TR = {
   border: "none",
 };
 
-export default function CompactList({ children }) {
-  return (
+export default function CompactList({children}) {
+    return (
     <table>
       <tbody>
         {children.map(function (child, i) {
           const key = "item-" + i;
-          return (
-            <tr key={key} style={STYLE_TR}>
-              {child}
-            </tr>
-          );
+          return <tr key={key} style={STYLE_TR}>{child}</tr>;
         })}
       </tbody>
     </table>
