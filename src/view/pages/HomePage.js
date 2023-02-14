@@ -6,11 +6,11 @@ import LGCandidateView from "../molecules/LGCandidateView";
 import Candidate from "../../nonview/core/Candidate";
 import LG from "../../nonview/core/LG";
 import LGSelector from "../organisms/LGSelector";
+import Geo from "../../nonview/core/Geo";
 
 const DEFAULT_LG_ID = "LG-11001";
 
-const STYLE = {  
-};
+const STYLE = {};
 
 const STYLE_HEADER = {
   padding: 2,
@@ -20,7 +20,7 @@ const STYLE_HEADER = {
   left: 0,
   width: "100%",
   height: 100,
-}
+};
 
 const STYLE_BODY = {
   padding: 10,
@@ -29,14 +29,14 @@ const STYLE_BODY = {
   bottom: 48,
   width: "100%",
   overflow: "scroll",
-}
+};
 
 const STYLE_FOOTER = {
   position: "fixed",
   bottom: 0,
   top: 48,
   width: "100%",
-}
+};
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -45,16 +45,23 @@ export default class HomePage extends Component {
       selectedLGID: DEFAULT_LG_ID,
       candidateList: null,
       lg: null,
+      latLng: null,
     };
   }
 
   async updateState() {
-    const { selectedLGID } = this.state;
+    let { selectedLGID, latLng } = this.state;
     const candidateList = await Candidate.listFromLG(selectedLGID);
     const lg = await LG.fromID(selectedLGID);
+
+    if (!latLng) {
+      latLng = await Geo.getLatLng();
+    }
+
     this.setState({
       lg,
       candidateList,
+      latLng,
     });
   }
 
@@ -69,29 +76,31 @@ export default class HomePage extends Component {
   }
 
   onChangeLGID(selectedLGID) {
-    console.debug("onChangeLGID.selectedLGID", selectedLGID);
     this.setState({ selectedLGID });
   }
 
   render() {
-    const { lg, candidateList, selectedLGID } = this.state;
-    console.debug(selectedLGID);
+    const { lg, candidateList, selectedLGID, latLng } = this.state;
     if (!lg) {
       return <CircularProgress />;
     }
 
     const keyLGDependent = "lg-dependent-" + selectedLGID;
+    const keyLatLngDependent = "latlng-dependent-" + latLng;
 
     return (
-      <Box sx={STYLE} key={keyLGDependent}>
-        <Box sx={STYLE_HEADER}>        
+      <Box sx={STYLE} key={keyLGDependent + keyLatLngDependent}>
+        <Box sx={STYLE_HEADER}>
           <LGSelector
             selectedLGID={selectedLGID}
             onChangeLGID={this.onChangeLGID.bind(this)}
+            latLng={latLng}
           />
         </Box>
         <Box style={STYLE_BODY}>
-          <LGCandidateView candidateList={candidateList} />
+          <LGCandidateView
+            candidateList={candidateList}            
+          />
         </Box>
         <CustomBottomNavigation />
       </Box>

@@ -9,21 +9,31 @@ const URL = [
   "lg.tsv",
 ].join("/");
 
-const TYPE_TO_TYPE_LONG  ={
-  'MC'  : 'Municipal Council',
-  'UC'  : 'Urban Council',
-  'PS'  : 'Pradeshiya Sabha',
-}
+const TYPE_TO_TYPE_LONG = {
+  MC: "Municipal Council",
+  UC: "Urban Council",
+  PS: "Pradeshiya Sabha",
+};
 
 export default class LG {
-  constructor(id, name, districtID) {
+  constructor(id, name, provinceID, districtID, latLng, population) {
     this.id = id;
     this.name = name;
+    this.provinceID = provinceID;
     this.districtID = districtID;
+    this.latLng = latLng;
+    this.population = population;
   }
 
   static fromDict(d) {
-    return new LG(d["id"], d["name"], d["district_id"]);
+    return new LG(
+      d["id"],
+      d["name"],
+      d["province_id"],
+      d["district_id"],
+      JSON.parse(d["centroid"]),
+      parseInt(d["population"])
+    );
   }
 
   static async fromID(id) {
@@ -50,11 +60,11 @@ export default class LG {
   }
 
   get nameOnly() {
-    return this.nameWords.slice(0, -1).join(' ')
+    return this.nameWords.slice(0, -1).join(" ");
   }
 
   get type() {
-    return this.nameWords.slice(-1)[0]
+    return this.nameWords.slice(-1)[0];
   }
 
   get typeLong() {

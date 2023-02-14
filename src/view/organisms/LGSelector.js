@@ -27,8 +27,6 @@ const DISPLAY_DISTRICT_IDS = [
   "LK-11",
 ];
 
-
-
 const STYLE_DIV_DISTRICT = {
   color: "gray",
   fontSize: "50%",
@@ -37,7 +35,6 @@ const STYLE_DIV_LG = {
   color: "black",
   fontSize: "100%",
 };
-
 
 const STYLE_DIV_LG_TYPE = STYLE_DIV_DISTRICT;
 
@@ -49,7 +46,6 @@ function LGSelectorMenuItemContent({ lg, district }) {
         <span style={STYLE_DIV_LG}>{lg.nameOnly + " "}</span>
         <span style={STYLE_DIV_LG_TYPE}>{lg.typeLong}</span>
       </div>
-      
     </div>
   );
 }
@@ -61,14 +57,30 @@ export default class LGSelector extends Component {
   }
 
   async componentDidMount() {
-    const lgListUnsorted = await LG.listAll();
-    const lgList = lgListUnsorted
-      .filter(function (lg) {
-        return DISPLAY_DISTRICT_IDS.includes(lg.districtID);
-      })
-      .sort(function (lgA, lgB) {
+    const { latLng } = this.props;
+    const lgListRaw = await LG.listAll();
+    const lgListFiltered = lgListRaw.filter(function (lg) {
+      return DISPLAY_DISTRICT_IDS.includes(lg.districtID);
+    });
+
+    let lgList;
+    if (latLng) {
+      lgList = lgListFiltered.sort(function (lgA, lgB) {
+        const latLngA = lgA.latLng;
+        const latLngB = lgB.latLng;
+        const distA2 =
+          Math.pow(latLngA[0] - latLng[0], 2) +
+          Math.pow(latLngA[1] - latLng[1], 2);
+        const distB2 =
+          Math.pow(latLngB[0] - latLng[0], 2) +
+          Math.pow(latLngB[1] - latLng[1], 2);
+        return distA2 - distB2;
+      });
+    } else {
+      lgList = lgListFiltered.sort(function (lgA, lgB) {
         return lgA.name.localeCompare(lgB.name);
       });
+    }
     const districtIdx = await District.idx();
     this.setState({ lgList, districtIdx });
   }
