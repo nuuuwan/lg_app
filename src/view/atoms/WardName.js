@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
+import { WARD_NUM_PR_LIST } from "../../nonview/core/Ward";
 
 const STYLE_WARD_NUM = {
   fontSize: "50%",
@@ -11,21 +12,18 @@ const STYLE_WARD_NAME_ONLY = {
   color: "#000",
 };
 
-export default function WardName({ wardName }) {
-  if (wardName === "None") {
+export default function WardName({ wardNum }) {
+  if (parseInt(wardNum) === WARD_NUM_PR_LIST) {
     return "Proportional List";
   }
 
-  const words = wardName.split("-");
-  const wardNum = parseInt(words[0]);
-  const wardNameOnly = words.slice(1).join(" ");
   return (
     <div>
       <div>
         <Typography sx={STYLE_WARD_NUM}>Ward {wardNum}</Typography>
       </div>
       <div>
-        <Typography sx={STYLE_WARD_NAME_ONLY}>{wardNameOnly}</Typography>
+        <Typography sx={STYLE_WARD_NAME_ONLY}></Typography>
       </div>
     </div>
   );

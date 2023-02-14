@@ -3,33 +3,31 @@ import WardCandidateView from "./WardCandidateView";
 
 export default function LGCandidateView({ candidateList }) {
   const idx = candidateList.reduce(function (idx, candidate) {
-    const wardName = candidate.wardName;
+    const wardNum = candidate.wardNum;
     const party = candidate.party;
-    if (!idx[wardName]) {
-      idx[wardName] = {};
+    if (!idx[wardNum]) {
+      idx[wardNum] = {};
     }
-    if (!idx[wardName][party]) {
-      idx[wardName][party] = [];
+    if (!idx[wardNum][party]) {
+      idx[wardNum][party] = [];
     }
-    idx[wardName][candidate.party].push(candidate.name);
+    idx[wardNum][candidate.party].push(candidate.name);
     return idx;
   }, {});
 
   const sortedEntries = Object.entries(idx).sort(function (
-    [wardName1, _],
-    [wardName2, __]
+    [wardNumA, _],
+    [wardNumB, __]
   ) {
-    const wardNumber1 = parseInt(wardName1.split("-")[0]);
-    const wardNumber2 = parseInt(wardName2.split("-")[0]);
-    return wardNumber1 - wardNumber2;
+    return wardNumA - wardNumB;
   });
 
-  return sortedEntries.map(function ([wardName, partyNameToNames]) {
-    const key = "ward-" + wardName;
+  return sortedEntries.map(function ([wardNum, partyNameToNames]) {
+    const key = "ward-" + wardNum;
     return (
       <WardCandidateView
         key={key}
-        wardName={wardName}
+        wardNum={wardNum}
         partyNameToNames={partyNameToNames}
       />
     );
