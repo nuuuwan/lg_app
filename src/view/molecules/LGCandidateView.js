@@ -15,13 +15,14 @@ export default function LGCandidateView({ candidateList }) {
     return idx;
   }, {});
 
-  const sortedEntries = Object.entries(idx).sort(
-    function ([wardName1, _], [wardName2, __]) {
-      const wardNumber1 = parseInt(wardName1.split('-')[0]);
-      const wardNumber2 = parseInt(wardName2.split('-')[0]);
-      return wardNumber1 - wardNumber2;
-    }
-  );
+  const sortedEntries = Object.entries(idx).sort(function (
+    [wardName1, _],
+    [wardName2, __]
+  ) {
+    const wardNumber1 = parseInt(wardName1.split("-")[0]);
+    const wardNumber2 = parseInt(wardName2.split("-")[0]);
+    return wardNumber1 - wardNumber2;
+  });
 
   return sortedEntries.map(function ([wardName, partyNameToNames]) {
     const key = "ward-" + wardName;

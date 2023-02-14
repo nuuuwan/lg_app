@@ -12,8 +12,14 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react" 
     ],
     "rules": {
+        "react/prop-types": 0
+    },
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
     }
 };

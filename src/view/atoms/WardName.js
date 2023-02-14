@@ -1,8 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
 
-import PropTypes from "prop-types";
-
 const STYLE_WARD_NUM = {
   fontSize: "50%",
   color: "#888",
@@ -13,13 +11,9 @@ const STYLE_WARD_NAME_ONLY = {
   color: "#000",
 };
 
-WardName.propTypes = {
-  wardName: PropTypes.string,
-};
-
 export default function WardName({ wardName }) {
-  if (wardName === 'None') {
-    return 'Proportional List';
+  if (wardName === "None") {
+    return "Proportional List";
   }
 
   const words = wardName.split("-");
