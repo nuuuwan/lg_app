@@ -26,7 +26,7 @@ const PARTIES_WITH_IMAGES = [
 ];
 
 const POPULAR_PARTIES = ["SLPP", "UNP", "SJB", "SLFP", "JJB"];
-const DEFAULT_PARTY_COLOR = "rgba(0, 0, 0, 0.03)";
+const DEFAULT_PARTY_COLOR = "rgba(0, 0, 0, 0.01)";
 
 export default class Party {
   constructor(name) {

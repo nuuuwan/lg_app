@@ -1,13 +1,9 @@
 import React from "react";
 
-const STYLE_TABLE = {
-  padding: 0,
-  margin: 0,
+const STYLE_TABLE = {  
 };
 
 const STYLE_TR = {
-  padding: 0,
-  margin: 0,
   border: "none",
   verticalAlign: "middle",
 };
