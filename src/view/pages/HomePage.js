@@ -46,13 +46,13 @@ export default class HomePage extends Component {
 
   async componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState.selectedLGID !== this.state.selectedLGID) {
-      await this.updateState(); 
+      await this.updateState();
     }
   }
 
   onChangeLGID(selectedLGID) {
-    console.debug('onChangeLGID.selectedLGID', selectedLGID)
-    this.setState({selectedLGID})
+    console.debug("onChangeLGID.selectedLGID", selectedLGID);
+    this.setState({ selectedLGID });
   }
 
   render() {
@@ -62,11 +62,14 @@ export default class HomePage extends Component {
       return <CircularProgress />;
     }
 
-    const keyLGDependent = 'lg-dependent-' + selectedLGID ;
-    
+    const keyLGDependent = "lg-dependent-" + selectedLGID;
+
     return (
-      <Box sx={STYLE} key={keyLGDependent} >
-        <LGSelector selectedLGID={selectedLGID} onChangeLGID={this.onChangeLGID.bind(this)}/>
+      <Box sx={STYLE} key={keyLGDependent}>
+        <LGSelector
+          selectedLGID={selectedLGID}
+          onChangeLGID={this.onChangeLGID.bind(this)}
+        />
         <LGCandidateView candidateList={candidateList} />
         <CustomBottomNavigation />
       </Box>

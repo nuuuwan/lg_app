@@ -16,7 +16,7 @@ const STYLE_TD = {
   border: "none",
   padding: 0,
   margin: 0,
-}
+};
 
 export default function CandidateName({ name }) {
   const words = name.split(" ");
