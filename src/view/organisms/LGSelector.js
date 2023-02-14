@@ -27,21 +27,29 @@ const DISPLAY_DISTRICT_IDS = [
   "LK-11",
 ];
 
-const STYLE_DIV_LG = {
-  color: "black",
-  fontSize: "100%",
-};
+
 
 const STYLE_DIV_DISTRICT = {
   color: "gray",
   fontSize: "50%",
 };
+const STYLE_DIV_LG = {
+  color: "black",
+  fontSize: "100%",
+};
+
+
+const STYLE_DIV_LG_TYPE = STYLE_DIV_DISTRICT;
 
 function LGSelectorMenuItemContent({ lg, district }) {
   return (
     <div>
       <div style={STYLE_DIV_DISTRICT}>{district.name + " District"}</div>
-      <div style={STYLE_DIV_LG}>{lg.name}</div>
+      <div>
+        <span style={STYLE_DIV_LG}>{lg.nameOnly + " "}</span>
+        <span style={STYLE_DIV_LG_TYPE}>{lg.typeLong}</span>
+      </div>
+      
     </div>
   );
 }
@@ -94,9 +102,6 @@ export default class LGSelector extends Component {
               </MenuItem>
             );
           })}
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </Box>
     );

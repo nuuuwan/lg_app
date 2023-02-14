@@ -9,6 +9,12 @@ const URL = [
   "lg.tsv",
 ].join("/");
 
+const TYPE_TO_TYPE_LONG  ={
+  'MC'  : 'Municipal Council',
+  'UC'  : 'Urban Council',
+  'PS'  : 'Pradeshiya Sabha',
+}
+
 export default class LG {
   constructor(id, name, districtID) {
     this.id = id;
@@ -37,5 +43,21 @@ export default class LG {
       idx[e.id] = e;
     });
     return idx;
+  }
+
+  get nameWords() {
+    return this.name.split(" ");
+  }
+
+  get nameOnly() {
+    return this.nameWords.slice(0, -1).join(' ')
+  }
+
+  get type() {
+    return this.nameWords.slice(-1)[0]
+  }
+
+  get typeLong() {
+    return TYPE_TO_TYPE_LONG[this.type];
   }
 }
