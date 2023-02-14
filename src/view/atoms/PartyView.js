@@ -35,7 +35,7 @@ export default function PartyView({ partyName }) {
   }
 
   const onClick = function () {
-    const search_query = `"${partyName}" Sri Lanka Local Elections 2023`;
+    const search_query = `${partyName} Sri Lanka Local Elections 2023`;
     const url = `https://www.google.com/search?q=${search_query}`;
     window.open(url, "_blank");
   };
