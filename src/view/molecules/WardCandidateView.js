@@ -9,11 +9,16 @@ import CandidateNameList from "./CandidateNameList";
 import CompactList from "./CompactList";
 
 export default function WardCandidateView({ wardName, partyNameToNames }) {
+
+  const partyNames = Party.sortPartyNames(Object.keys(partyNameToNames));
+
   return (
     <Box>
       <Typography variant="h5">{<WardName wardName={wardName} />}</Typography>
       <CompactList>
-        {Object.entries(partyNameToNames).map(function ([partyName, names]) {
+        {partyNames.map(function (partyName) {
+          
+          const names = partyNameToNames[partyName];
           const key = wardName + "-" + partyName;
           return [
             <td key={key + "party"}>

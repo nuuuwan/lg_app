@@ -6,7 +6,7 @@ import LGCandidateView from "../molecules/LGCandidateView";
 import Candidate from "../../nonview/core/Candidate";
 import LG from "../../nonview/core/LG";
 
-const DEFAULT_LG_ID = "LG-11011" ; 
+const DEFAULT_LG_ID = "LG-11002" ; 
 
 const STYLE = {
   position: "fixed",
