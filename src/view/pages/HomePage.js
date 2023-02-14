@@ -79,12 +79,19 @@ export default class HomePage extends Component {
     this.setState({ selectedLGID });
   }
 
-  render() {
+  renderBody() {
     const { lg, candidateList, selectedLGID, latLng } = this.state;
     if (!lg) {
       return <CircularProgress />;
     }
 
+    
+    return <LGCandidateView candidateList={candidateList} />
+
+  }
+
+  render() {
+    const { lg, selectedLGID, latLng } = this.state;
     const keyLGDependent = "lg-dependent-" + selectedLGID;
     const keyLatLngDependent = "latlng-dependent-" + latLng;
 
@@ -98,7 +105,7 @@ export default class HomePage extends Component {
           />
         </Box>
         <Box style={STYLE_BODY}>
-          <LGCandidateView candidateList={candidateList} />
+          {this.renderBody()}
         </Box>
         <CustomBottomNavigation />
       </Box>
