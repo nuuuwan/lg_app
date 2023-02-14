@@ -5,8 +5,9 @@ import LGCandidateView from "../molecules/LGCandidateView";
 
 import Candidate from "../../nonview/core/Candidate";
 import LG from "../../nonview/core/LG";
+import LGSelector from "../organisms/LGSelector";
 
-const DEFAULT_LG_ID = "LG-11002" ; 
+const DEFAULT_LG_ID = "LG-11002";
 
 const STYLE = {
   position: "fixed",
@@ -23,33 +24,49 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lgID: DEFAULT_LG_ID,
+      selectedLGID: DEFAULT_LG_ID,
       candidateList: null,
       lg: null,
     };
   }
 
-  async componentDidMount() {
-    const { lgID } = this.state;
-    const candidateList = await Candidate.listFromLG(lgID);
-    const lg = await LG.fromID(lgID);
+  async updateState() {
+    const { selectedLGID } = this.state;
+    const candidateList = await Candidate.listFromLG(selectedLGID);
+    const lg = await LG.fromID(selectedLGID);
     this.setState({
       lg,
       candidateList,
     });
   }
 
+  async componentDidMount() {
+    await this.updateState();
+  }
+
+  async componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.selectedLGID !== this.state.selectedLGID) {
+      await this.updateState(); 
+    }
+  }
+
+  onChangeLGID(selectedLGID) {
+    console.debug('onChangeLGID.selectedLGID', selectedLGID)
+    this.setState({selectedLGID})
+  }
+
   render() {
-    const { lg, candidateList } = this.state;
+    const { lg, candidateList, selectedLGID } = this.state;
+    console.debug(selectedLGID);
     if (!lg) {
       return <CircularProgress />;
     }
+
+    const keyLGDependent = 'lg-dependent-' + selectedLGID ;
+    
     return (
-      <Box sx={STYLE}>
-        <Typography variant="subtitle">
-          {"2023 Sri Lanka Local Elections Candidates"}
-        </Typography>
-        <Typography variant="h3">{lg.name}</Typography>
+      <Box sx={STYLE} key={keyLGDependent} >
+        <LGSelector selectedLGID={selectedLGID} onChangeLGID={this.onChangeLGID.bind(this)}/>
         <LGCandidateView candidateList={candidateList} />
         <CustomBottomNavigation />
       </Box>

@@ -12,23 +12,15 @@ const STYLE_LAST_NAME = {
   fontSize: "80%",
 };
 
-
-
 export default function CandidateName({ name }) {
   const words = name.split(" ");
   const firstNames = words.slice(0, -1).join(" ");
   const lastName = words.slice(-1)[0].toUpperCase();
 
-  
-
   const onClick = function () {
-    const search_query = `"${name}" Sri Lanka Local Elections 2023`
+    const search_query = `"${name}" Sri Lanka Local Elections 2023`;
     const url = `https://www.google.com/search?q=${search_query}`;
-    window.open(
-      url,
-      '_blank' 
-    );
-    
+    window.open(url, "_blank");
   };
 
   return (

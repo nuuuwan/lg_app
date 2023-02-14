@@ -6,9 +6,26 @@ const PARTY_TO_HUE = {
   SLFP: 240,
 };
 
-const PARTIES_WITH_IMAGES = ['ACMC', 'ACTC', 'AITC', 'AITM', 'CWC', 'EPDP', 'FSP', 'JJB', 'MNA', 'NC', 'SJB', 'SLFP', 'SLMC', 'SLPP', 'TNA', 'UNP']
+const PARTIES_WITH_IMAGES = [
+  "ACMC",
+  "ACTC",
+  "AITC",
+  "AITM",
+  "CWC",
+  "EPDP",
+  "FSP",
+  "JJB",
+  "MNA",
+  "NC",
+  "SJB",
+  "SLFP",
+  "SLMC",
+  "SLPP",
+  "TNA",
+  "UNP",
+];
 
-const POPULAR_PARTIES = ['SLPP', 'UNP', 'SJB', 'SLFP', 'JJB'];
+const POPULAR_PARTIES = ["SLPP", "UNP", "SJB", "SLFP", "JJB"];
 
 export default class Party {
   constructor(name) {
@@ -32,23 +49,20 @@ export default class Party {
     if (!PARTIES_WITH_IMAGES.includes(this.name)) {
       return undefined;
     }
-    return process.env.PUBLIC_URL +  `/images/party_symbols/${this.name}.png`
+    return process.env.PUBLIC_URL + `/images/party_symbols/${this.name}.png`;
   }
 
   static sortPartyNames(partyNames) {
-    return partyNames.sort(
-      function(partyNameA, partyNameB) {
-        const hasImageA = POPULAR_PARTIES.includes(partyNameA);
-        const hasImageB = POPULAR_PARTIES.includes(partyNameB);
-        if (hasImageA && !hasImageB) {
-          return -1;
-        }
-        if (!hasImageA && hasImageB) {
-          return 1;
-        }
-        return partyNameA.localeCompare(partyNameB);
+    return partyNames.sort(function (partyNameA, partyNameB) {
+      const hasImageA = POPULAR_PARTIES.includes(partyNameA);
+      const hasImageB = POPULAR_PARTIES.includes(partyNameB);
+      if (hasImageA && !hasImageB) {
+        return -1;
       }
-    );
+      if (!hasImageA && hasImageB) {
+        return 1;
+      }
+      return partyNameA.localeCompare(partyNameB);
+    });
   }
-
 }
