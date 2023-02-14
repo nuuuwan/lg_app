@@ -12,6 +12,12 @@ const STYLE_LAST_NAME = {
   fontSize: "80%",
 };
 
+const STYLE_TD = {
+  border: "none",
+  padding: 0,
+  margin: 0,
+}
+
 export default function CandidateName({ name }) {
   const words = name.split(" ");
   const firstNames = words.slice(0, -1).join(" ");
@@ -24,7 +30,7 @@ export default function CandidateName({ name }) {
   };
 
   return (
-    <td onClick={onClick} className="clickable">
+    <td onClick={onClick} className="clickable" style={STYLE_TD}>
       <span style={STYLE_LAST_NAME}>{lastName + " "}</span>
       <span style={STYLE_FIRST_NAMES}>{firstNames}</span>
     </td>

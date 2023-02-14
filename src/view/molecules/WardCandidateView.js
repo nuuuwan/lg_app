@@ -18,12 +18,13 @@ export default function WardCandidateView({ wardName, partyNameToNames }) {
         {partyNames.map(function (partyName) {
           const names = partyNameToNames[partyName];
           const key = wardName + "-" + partyName;
+          const backgroundColor = (new Party(partyName)).color;
           return [
             <td key={key + "party"}>
               <PartyView partyName={partyName} />
             </td>,
             <td key={key + "name"}>
-              <CandidateNameList names={names} />
+              <CandidateNameList names={names} style={{backgroundColor}} />
             </td>,
           ];
         })}

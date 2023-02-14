@@ -26,8 +26,11 @@ const PARTIES_WITH_IMAGES = [
 ];
 
 const POPULAR_PARTIES = ["SLPP", "UNP", "SJB", "SLFP", "JJB"];
+const DEFAULT_PARTY_COLOR = 'rgba(0, 0, 0, 0.03)';
 
 export default class Party {
+
+  
   constructor(name) {
     this.name = name;
   }
@@ -39,9 +42,9 @@ export default class Party {
   get color() {
     const hue = this.hue;
     if (hue === undefined) {
-      return "white";
+      return DEFAULT_PARTY_COLOR;
     }
-    const alpha = 0.5;
+    const alpha = 0.1;
     return `hsla(${hue}, 100%, 50%, ${alpha})`;
   }
 

@@ -10,12 +10,12 @@ const STYLE_TR = {
   margin: 0,
   paddingRight: 2,
   border: "none",
-  verticalAlign: "middle",  
+  verticalAlign: "middle",    
 };
 
-export default function CompactList({ children }) {
+export default function CompactList({ children, style }) {
   return (
-    <table style={STYLE_TABLE}>
+    <table style={{...STYLE_TABLE, ...style}}>
       <tbody>
         {children.map(function (child, i) {
           const key = "item-" + i;
