@@ -36,6 +36,8 @@ const STYLE_DIV_LG = {
   fontSize: "100%",
 };
 
+const N_DISPLAY_CLOSEST = 5;
+
 const STYLE_DIV_LG_TYPE = STYLE_DIV_DISTRICT;
 
 function LGSelectorMenuItemContent({ lg, district }) {
@@ -63,9 +65,10 @@ export default class LGSelector extends Component {
       return DISPLAY_DISTRICT_IDS.includes(lg.districtID);
     });
 
+    let lgListRemainder;
     let lgList;
     if (latLng) {
-      lgList = lgListFiltered.sort(function (lgA, lgB) {
+      const lgListSortedByDistance = lgListFiltered.sort(function (lgA, lgB) {
         const latLngA = lgA.latLng;
         const latLngB = lgB.latLng;
         const distA2 =
@@ -76,11 +79,19 @@ export default class LGSelector extends Component {
           Math.pow(latLngB[1] - latLng[1], 2);
         return distA2 - distB2;
       });
+      
+      lgList = lgListSortedByDistance.slice(0, N_DISPLAY_CLOSEST);
+      lgListRemainder = lgListSortedByDistance.slice(N_DISPLAY_CLOSEST);
+      
     } else {
-      lgList = lgListFiltered.sort(function (lgA, lgB) {
-        return lgA.name.localeCompare(lgB.name);
-      });
+      lgList = []
+      lgListRemainder = lgListFiltered;
     }
+
+    lgList = [].concat(lgList, lgListRemainder.sort(function (lgA, lgB) {
+      return lgA.name.localeCompare(lgB.name);
+    }));
+    
     const districtIdx = await District.idx();
     this.setState({ lgList, districtIdx });
   }
