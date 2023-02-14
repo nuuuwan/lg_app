@@ -7,18 +7,36 @@ import Candidate from "../../nonview/core/Candidate";
 import LG from "../../nonview/core/LG";
 import LGSelector from "../organisms/LGSelector";
 
-const DEFAULT_LG_ID = "LG-11002";
+const DEFAULT_LG_ID = "LG-11001";
 
-const STYLE = {
+const STYLE = {  
+};
+
+const STYLE_HEADER = {
+  padding: 2,
+  paddingRight: 2,
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
-  height: "100%",
-  backgroundColor: "white",
-  padding: 2,
+  height: 100,
+}
+
+const STYLE_BODY = {
+  padding: 10,
+  position: "fixed",
+  top: 100,
+  bottom: 48,
+  width: "100%",
   overflow: "scroll",
-};
+}
+
+const STYLE_FOOTER = {
+  position: "fixed",
+  bottom: 0,
+  top: 48,
+  width: "100%",
+}
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -66,11 +84,15 @@ export default class HomePage extends Component {
 
     return (
       <Box sx={STYLE} key={keyLGDependent}>
-        <LGSelector
-          selectedLGID={selectedLGID}
-          onChangeLGID={this.onChangeLGID.bind(this)}
-        />
-        <LGCandidateView candidateList={candidateList} />
+        <Box sx={STYLE_HEADER}>        
+          <LGSelector
+            selectedLGID={selectedLGID}
+            onChangeLGID={this.onChangeLGID.bind(this)}
+          />
+        </Box>
+        <Box style={STYLE_BODY}>
+          <LGCandidateView candidateList={candidateList} />
+        </Box>
         <CustomBottomNavigation />
       </Box>
     );

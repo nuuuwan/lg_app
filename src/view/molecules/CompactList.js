@@ -8,7 +8,6 @@ const STYLE_TABLE = {
 const STYLE_TR = {
   padding: 0,
   margin: 0,
-  paddingRight: 2,
   border: "none",
   verticalAlign: "middle",
 };

@@ -9,6 +9,7 @@ const STYLE = {
   borderRadius: "50%",
   fontSize: "80%",
   color: "gray",
+  minWidth: 48,
 };
 
 const STYLE_IMG_SYMBOL = {
