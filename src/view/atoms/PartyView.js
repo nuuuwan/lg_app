@@ -1,5 +1,6 @@
 import React from "react";
 import Party from "../../nonview/core/Party";
+import { DEFAULT_FONT_FAMILY } from "../atoms/DefaultStyles";
 
 import "./Clickable.css";
 
@@ -10,7 +11,7 @@ const STYLE = {
   fontSize: "80%",
   color: "gray",
   minWidth: 48,
-  fontFamily: "Urbanist",
+  fontFamily: DEFAULT_FONT_FAMILY,
 };
 
 const STYLE_IMG_SYMBOL = {

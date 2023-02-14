@@ -3,14 +3,11 @@ import {
   Select,
   MenuItem,
   CircularProgress,
-  Box,
-  Typography,
-  FormControl,
-  InputLabel,
-  Menu,
+  Box,  
 } from "@mui/material";
 import LG from "../../nonview/core/LG";
 import District from "../../nonview/core/District";
+import { DEFAULT_FONT_FAMILY } from "../atoms/DefaultStyles";
 
 const DISPLAY_DISTRICT_IDS = [
   "LK-62",

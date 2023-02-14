@@ -1,17 +1,18 @@
 import React from "react";
-
+import {DEFAULT_FONT_FAMILY} from "./DefaultStyles";
 import "./Clickable.css";
+
 
 const STYLE_FIRST_NAMES = {
   color: "#888",
   fontSize: "50%",
-  fontFamily: "Urbanist",
+  fontFamily: DEFAULT_FONT_FAMILY,
 };
 
 const STYLE_LAST_NAME = {
   color: "#000",
   fontSize: "80%",
-  fontFamily: "Urbanist",
+  fontFamily: DEFAULT_FONT_FAMILY,
 };
 
 const STYLE_TD = {

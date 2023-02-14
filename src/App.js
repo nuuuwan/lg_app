@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HomePage from "./view/pages/HomePage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import {DEFAULT_FONT_FAMILY} from "./view/atoms/DefaultStyles";
 const THEME = createTheme({
   // palette: {
   //   primary: {
@@ -18,7 +18,7 @@ const THEME = createTheme({
   //   },
   // },
   typography: {
-    fontFamily: ["Urbanist", "Bellota Text", "Ubuntu", "sans-serif"].join(","),
+    fontFamily: [DEFAULT_FONT_FAMILY, "sans-serif"].join(","),
     fontSize: 14,
   },
 });
