@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import WardName from "../atoms/WardName";
 
 import Party from "../../nonview/core/Party";
@@ -10,7 +10,8 @@ import CandidateNameList from "./CandidateNameList";
 import CompactList from "./CompactList";
 
 const STYLE = {
-  marginBottom: 3,
+  margin: 5,
+  paddingLeft: 10,
   width: "90%",
 };
 
@@ -18,7 +19,7 @@ export default function WardCandidateView({ wardNum, ward, partyNameToNames }) {
   const partyNames = Party.sortPartyNames(Object.keys(partyNameToNames));
 
   return (
-    <Box style={STYLE}>
+    <Paper style={STYLE} elevation={0}>
       <ShowHide>
         <Typography variant="h5">
           <WardName ward={ward} />
@@ -39,6 +40,6 @@ export default function WardCandidateView({ wardNum, ward, partyNameToNames }) {
           })}
         </CompactList>
       </ShowHide>
-    </Box>
+    </Paper>
   );
 }

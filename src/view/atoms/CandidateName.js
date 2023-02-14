@@ -24,7 +24,7 @@ export default function CandidateName({ name }) {
   const lastName = words.slice(-1)[0].toUpperCase();
 
   const onClick = function () {
-    const search_query = `${name} Sri Lanka Local Elections 2023`;
+    const search_query = `${name} Sri Lanka`;
     const url = `https://www.google.com/search?q=${search_query}`;
     window.open(url, "_blank");
   };

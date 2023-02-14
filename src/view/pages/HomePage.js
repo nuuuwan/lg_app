@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import CustomBottomNavigation from "../organisms/CustomBottomNavigation";
 import LGCandidateView from "../molecules/LGCandidateView";
 
@@ -14,19 +14,21 @@ const DEFAULT_LG_ID = "LG-11001";
 const STYLE = {};
 
 const STYLE_HEADER = {
-  padding: 2,
-  paddingRight: 2,
+  paddingTop: 1,
+  paddingBottom: 1,
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   height: 100,
+  backgroundColor: "#eee",
+  textAlign: "center",
 };
 
 const STYLE_BODY = {
-  padding: 20,
+  paddingLeft: 20,
   position: "fixed",
-  top: 100,
+  top: 135,
   bottom: 48,
   width: "90%",
   overflow: "scroll",
@@ -105,6 +107,9 @@ export default class HomePage extends Component {
             onChangeLGID={this.onChangeLGID.bind(this)}
             latLng={latLng}
           />
+          <Typography style={{fontSize: "80%"}}>
+            2023 Sri Lanka Local Authority Elections
+          </Typography>
         </Box>
         <Box style={STYLE_BODY}>{this.renderBody()}</Box>
         <CustomBottomNavigation />

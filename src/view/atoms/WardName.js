@@ -13,8 +13,9 @@ const STYLE_WARD_NUM = {
 };
 
 const STYLE_WARD_NAME_ONLY = {
-  fontSize: "100%",
+  fontSize: "60%",
   color: "#000",
+  paddingLeft: 1,
 };
 
 const STYLE_ICON = {

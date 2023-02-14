@@ -34,7 +34,6 @@ const STYLE_DIV_DISTRICT = {
 
 const STYLE_SPAN_LG_NAME_ONLY = {
   color: "black",
-  fontSize: "100%",
 };
 
 const N_DISPLAY_CLOSEST = 5;
@@ -46,7 +45,7 @@ const STYLE_SPAN_LG_ICON = {
 };
 
 const STYLE_LG_ICON = {
-  height: 12,
+  height: 18,
 };
 
 const STYLE_DIV_LG = {
@@ -54,6 +53,8 @@ const STYLE_DIV_LG = {
 };
 
 function LGSelectorMenuItemContent({ lg, district }) {
+  const fontSize  = Math.min(30, 500 / lg.name.length)
+  const styleCustom = {fontSize};
   return (
     <div>
       <div style={STYLE_DIV_DISTRICT}>{district.name + " District"}</div>
@@ -61,8 +62,7 @@ function LGSelectorMenuItemContent({ lg, district }) {
         <span style={STYLE_SPAN_LG_ICON}>
           <lg.Icon style={STYLE_LG_ICON} />
         </span>
-        <span style={STYLE_SPAN_LG_NAME_ONLY}>{lg.nameOnly + " "}</span>
-        <span style={STYLE_SPAN_LG_TYPE}>{lg.typeLong}</span>
+        <span style={{...STYLE_SPAN_LG_NAME_ONLY, ...styleCustom}}>{lg.name + " "}</span>        
       </div>
     </div>
   );
