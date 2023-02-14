@@ -29,7 +29,7 @@ const STYLE_BODY = {
   paddingLeft: 20,
   position: "fixed",
   top: 135,
-  bottom: 48,
+  bottom: 10,
   width: "90%",
   overflow: "scroll",
 };
@@ -37,7 +37,7 @@ const STYLE_BODY = {
 const STYLE_FOOTER = {
   position: "fixed",
   bottom: 0,
-  top: 48,
+  top: 10,
   width: "100%",
 };
 
@@ -112,7 +112,6 @@ export default class HomePage extends Component {
           </Typography>
         </Box>
         <Box style={STYLE_BODY}>{this.renderBody()}</Box>
-        <CustomBottomNavigation />
       </Box>
     );
   }
