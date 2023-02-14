@@ -31,22 +31,36 @@ const STYLE_DIV_DISTRICT = {
   color: "gray",
   fontSize: "50%",
 };
-const STYLE_DIV_LG = {
+
+const STYLE_SPAN_LG_NAME_ONLY = {
   color: "black",
   fontSize: "100%",
 };
 
 const N_DISPLAY_CLOSEST = 5;
 
-const STYLE_DIV_LG_TYPE = STYLE_DIV_DISTRICT;
+const STYLE_SPAN_LG_TYPE = STYLE_DIV_DISTRICT;
+
+const STYLE_SPAN_LG_ICON = {
+  color: "#888",
+};
+
+const STYLE_LG_ICON  = {
+  height: 12,
+}
+
+const STYLE_DIV_LG = {
+  verticalAlign: "bottom",
+}
 
 function LGSelectorMenuItemContent({ lg, district }) {
   return (
     <div>
       <div style={STYLE_DIV_DISTRICT}>{district.name + " District"}</div>
-      <div>
-        <span style={STYLE_DIV_LG}>{lg.nameOnly + " "}</span>
-        <span style={STYLE_DIV_LG_TYPE}>{lg.typeLong}</span>
+      <div style={STYLE_DIV_LG}>
+        <span style={STYLE_SPAN_LG_ICON}><lg.Icon style={STYLE_LG_ICON}/></span>
+        <span style={STYLE_SPAN_LG_NAME_ONLY}>{lg.nameOnly + " "}</span>
+        <span style={STYLE_SPAN_LG_TYPE}>{lg.typeLong}</span>
       </div>
     </div>
   );

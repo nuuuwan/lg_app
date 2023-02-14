@@ -1,5 +1,9 @@
 import { WWW } from "@nuuuwan/utils-js-dev";
 
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
+import LandscapeIcon from '@mui/icons-material/Landscape';
+
 const URL = [
   "https://raw.githubusercontent.com",
   "nuuuwan",
@@ -69,5 +73,13 @@ export default class LG {
 
   get typeLong() {
     return TYPE_TO_TYPE_LONG[this.type];
+  }
+
+  get Icon() {
+    return {
+      'MC': LocationCityIcon,
+      'UC': HolidayVillageIcon,
+      'PS': LandscapeIcon,
+    }[this.type]
   }
 }
