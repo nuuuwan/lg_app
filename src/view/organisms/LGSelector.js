@@ -45,20 +45,22 @@ const STYLE_SPAN_LG_ICON = {
   color: "#888",
 };
 
-const STYLE_LG_ICON  = {
+const STYLE_LG_ICON = {
   height: 12,
-}
+};
 
 const STYLE_DIV_LG = {
   verticalAlign: "bottom",
-}
+};
 
 function LGSelectorMenuItemContent({ lg, district }) {
   return (
     <div>
       <div style={STYLE_DIV_DISTRICT}>{district.name + " District"}</div>
       <div style={STYLE_DIV_LG}>
-        <span style={STYLE_SPAN_LG_ICON}><lg.Icon style={STYLE_LG_ICON}/></span>
+        <span style={STYLE_SPAN_LG_ICON}>
+          <lg.Icon style={STYLE_LG_ICON} />
+        </span>
         <span style={STYLE_SPAN_LG_NAME_ONLY}>{lg.nameOnly + " "}</span>
         <span style={STYLE_SPAN_LG_TYPE}>{lg.typeLong}</span>
       </div>
@@ -93,19 +95,21 @@ export default class LGSelector extends Component {
           Math.pow(latLngB[1] - latLng[1], 2);
         return distA2 - distB2;
       });
-      
+
       lgList = lgListSortedByDistance.slice(0, N_DISPLAY_CLOSEST);
       lgListRemainder = lgListSortedByDistance.slice(N_DISPLAY_CLOSEST);
-      
     } else {
-      lgList = []
+      lgList = [];
       lgListRemainder = lgListFiltered;
     }
 
-    lgList = [].concat(lgList, lgListRemainder.sort(function (lgA, lgB) {
-      return lgA.name.localeCompare(lgB.name);
-    }));
-    
+    lgList = [].concat(
+      lgList,
+      lgListRemainder.sort(function (lgA, lgB) {
+        return lgA.name.localeCompare(lgB.name);
+      })
+    );
+
     const districtIdx = await District.idx();
     this.setState({ lgList, districtIdx });
   }

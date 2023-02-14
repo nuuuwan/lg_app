@@ -98,9 +98,7 @@ export default class HomePage extends Component {
           />
         </Box>
         <Box style={STYLE_BODY}>
-          <LGCandidateView
-            candidateList={candidateList}            
-          />
+          <LGCandidateView candidateList={candidateList} />
         </Box>
         <CustomBottomNavigation />
       </Box>

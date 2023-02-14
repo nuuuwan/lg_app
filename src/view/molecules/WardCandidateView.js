@@ -12,7 +12,7 @@ const STYLE = {
   padding: 10,
   marginBottom: 10,
   width: "90%",
-}
+};
 
 export default function WardCandidateView({ wardName, partyNameToNames }) {
   const partyNames = Party.sortPartyNames(Object.keys(partyNameToNames));

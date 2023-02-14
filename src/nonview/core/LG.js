@@ -1,8 +1,8 @@
 import { WWW } from "@nuuuwan/utils-js-dev";
 
-import LocationCityIcon from '@mui/icons-material/LocationCity';
-import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
-import LandscapeIcon from '@mui/icons-material/Landscape';
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import HolidayVillageIcon from "@mui/icons-material/HolidayVillage";
+import LandscapeIcon from "@mui/icons-material/Landscape";
 
 const URL = [
   "https://raw.githubusercontent.com",
@@ -77,9 +77,9 @@ export default class LG {
 
   get Icon() {
     return {
-      'MC': LocationCityIcon,
-      'UC': HolidayVillageIcon,
-      'PS': LandscapeIcon,
-    }[this.type]
+      MC: LocationCityIcon,
+      UC: HolidayVillageIcon,
+      PS: LandscapeIcon,
+    }[this.type];
   }
 }
