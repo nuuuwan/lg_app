@@ -1,7 +1,7 @@
 import React from "react";
 import WardCandidateView from "./WardCandidateView";
 
-export default function LGCandidateView({ candidateList }) {
+export default function LGCandidateView({ candidateList, wardIdx }) {
   const idx = candidateList.reduce(function (idx, candidate) {
     const wardNum = candidate.wardNum;
     const party = candidate.party;
@@ -24,10 +24,12 @@ export default function LGCandidateView({ candidateList }) {
 
   return sortedEntries.map(function ([wardNum, partyNameToNames]) {
     const key = "ward-" + wardNum;
+    const ward = wardIdx[wardNum];
     return (
       <WardCandidateView
         key={key}
         wardNum={wardNum}
+        ward={ward}
         partyNameToNames={partyNameToNames}
       />
     );

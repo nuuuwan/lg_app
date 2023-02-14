@@ -19,8 +19,6 @@ const URL_BASE_FOR_LG = [
   "candidates_by_lg",
 ].join("/");
 
-
-
 export default class Candidate {
   constructor(districtID, lgID, party, wardNum, name) {
     this.districtID = districtID;

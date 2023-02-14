@@ -12,18 +12,18 @@ const STYLE_WARD_NAME_ONLY = {
   color: "#000",
 };
 
-export default function WardName({ wardNum }) {
-  if (parseInt(wardNum) === WARD_NUM_PR_LIST) {
+export default function WardName({ ward }) {
+  if (parseInt(ward.wardNum) === WARD_NUM_PR_LIST) {
     return "Proportional List";
   }
 
   return (
     <div>
       <div>
-        <Typography sx={STYLE_WARD_NUM}>Ward {wardNum}</Typography>
+        <Typography sx={STYLE_WARD_NUM}>Ward {ward.wardNum}</Typography>
       </div>
       <div>
-        <Typography sx={STYLE_WARD_NAME_ONLY}></Typography>
+        <Typography sx={STYLE_WARD_NAME_ONLY}>{ward.wardName}</Typography>
       </div>
     </div>
   );

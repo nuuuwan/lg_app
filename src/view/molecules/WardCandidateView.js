@@ -14,12 +14,14 @@ const STYLE = {
   width: "90%",
 };
 
-export default function WardCandidateView({ wardNum, partyNameToNames }) {
+export default function WardCandidateView({ wardNum, ward, partyNameToNames }) {
   const partyNames = Party.sortPartyNames(Object.keys(partyNameToNames));
 
   return (
     <Box style={STYLE}>
-      <Typography variant="h5">{<WardName wardNum={wardNum} />}</Typography>
+      <Typography variant="h5">
+        <WardName ward={ward} />
+      </Typography>
       <CompactList>
         {partyNames.map(function (partyName) {
           const names = partyNameToNames[partyName];

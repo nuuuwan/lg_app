@@ -4,6 +4,7 @@ import CustomBottomNavigation from "../organisms/CustomBottomNavigation";
 import LGCandidateView from "../molecules/LGCandidateView";
 
 import Candidate from "../../nonview/core/Candidate";
+import Ward from "../../nonview/core/Ward";
 import LG from "../../nonview/core/LG";
 import LGSelector from "../organisms/LGSelector";
 import Geo from "../../nonview/core/Geo";
@@ -43,9 +44,6 @@ export default class HomePage extends Component {
     super(props);
     this.state = {
       selectedLGID: DEFAULT_LG_ID,
-      candidateList: null,
-      lg: null,
-      latLng: null,
     };
   }
 
@@ -53,6 +51,7 @@ export default class HomePage extends Component {
     let { selectedLGID, latLng } = this.state;
     const candidateList = await Candidate.listFromLG(selectedLGID);
     const lg = await LG.fromID(selectedLGID);
+    const wardIdx = await Ward.idxFromLG(selectedLGID);
 
     if (!latLng) {
       latLng = await Geo.getLatLng();
@@ -62,6 +61,7 @@ export default class HomePage extends Component {
       lg,
       candidateList,
       latLng,
+      wardIdx,
     });
   }
 
@@ -80,14 +80,12 @@ export default class HomePage extends Component {
   }
 
   renderBody() {
-    const { lg, candidateList, selectedLGID, latLng } = this.state;
+    const { lg, candidateList, selectedLGID, wardIdx } = this.state;
     if (!lg) {
       return <CircularProgress />;
     }
 
-    
-    return <LGCandidateView candidateList={candidateList} />
-
+    return <LGCandidateView candidateList={candidateList} wardIdx={wardIdx} />;
   }
 
   render() {
@@ -104,9 +102,7 @@ export default class HomePage extends Component {
             latLng={latLng}
           />
         </Box>
-        <Box style={STYLE_BODY}>
-          {this.renderBody()}
-        </Box>
+        <Box style={STYLE_BODY}>{this.renderBody()}</Box>
         <CustomBottomNavigation />
       </Box>
     );
