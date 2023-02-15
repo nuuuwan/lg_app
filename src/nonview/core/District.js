@@ -32,6 +32,7 @@ export const DISPLAY_DISTRICT_IDS = [
   'LK-53',
   'LK-43',
   'LK-45',
+  'LK-42',
 ];
 
 
@@ -59,6 +60,7 @@ export const DISPLAY_DISTRICT_NAMES = [
   'Trincomalee',
   'Vavuniya',
   'Kilinochchi',
+  'Mannar',
 ];
 
 export default class District {
