@@ -12,18 +12,22 @@ const URL = [
 export const DISPLAY_DISTRICT_IDS = [
   "LK-11",
   "LK-12",
-  "LK-13",
-  "LK-21",
-  "LK-23",
-  "LK-31",
-  "LK-32",
-  "LK-33",
   "LK-61",
-  "LK-62",
-  "LK-71",
-  "LK-81",
+  "LK-21",
+  "LK-13",
   "LK-91",
+  "LK-31",
+  "LK-71",
   "LK-92",
+  "LK-81",
+  "LK-32",
+  "LK-62",
+  "LK-23",
+  "LK-33",
+  "LK-41",
+  "LK-51",
+  "LK-22",
+  "LK-82",
 ];
 
 export const DISPLAY_DISTRICT_NAMES = [
@@ -40,7 +44,11 @@ export const DISPLAY_DISTRICT_NAMES = [
   "Matara",
   "Puttalam",
   "Nuwara Eliya",
-  'Hambantota',
+  "Hambantota",
+  "Jaffna",
+  "Batticaloa",
+  "Matale",
+  "Moneragala",
 ];
 
 export default class District {
