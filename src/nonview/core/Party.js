@@ -4,6 +4,7 @@ const PARTY_TO_HUE = {
   UNP: 120,
   SJB: 105,
   SLFP: 240,
+  ITAK: 60,
 };
 
 const PARTIES_WITH_IMAGES = [
@@ -14,6 +15,7 @@ const PARTIES_WITH_IMAGES = [
   "CWC",
   "EPDP",
   "FSP",
+  "ITAK",
   "JJB",
   "MNA",
   "NC",
@@ -25,7 +27,7 @@ const PARTIES_WITH_IMAGES = [
   "UNP",
 ];
 
-const POPULAR_PARTIES = ["SLPP", "UNP", "SJB", "SLFP", "JJB"];
+const POPULAR_PARTIES = ["SLPP", "UNP", "SJB", "SLFP", "JJB", "ITAK"];
 const DEFAULT_PARTY_COLOR = "rgba(0, 0, 0, 0.01)";
 
 export default class Party {

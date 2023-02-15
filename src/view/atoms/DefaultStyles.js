@@ -1,1 +1,1 @@
-export const DEFAULT_FONT_FAMILY = "Bellota Text";
+export const DEFAULT_FONT_FAMILY = "Zen Maru Gothic";
