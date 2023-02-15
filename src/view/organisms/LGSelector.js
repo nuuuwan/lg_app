@@ -3,21 +3,7 @@ import { Select, MenuItem, CircularProgress, Box } from "@mui/material";
 import LG from "../../nonview/core/LG";
 import District from "../../nonview/core/District";
 import { DEFAULT_FONT_FAMILY } from "../atoms/DefaultStyles";
-
-const DISPLAY_DISTRICT_IDS = [
-  "LK-62",
-  "LK-32",
-  "LK-81",
-  "LK-92",
-  "LK-71",
-  "LK-31",
-  "LK-91",
-  "LK-13",
-  "LK-21",
-  "LK-61",
-  "LK-12",
-  "LK-11",
-];
+import { DISPLAY_DISTRICT_IDS } from "../../nonview/core/District";
 
 const STYLE_DIV_DISTRICT = {
   color: "gray",

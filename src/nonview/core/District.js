@@ -9,6 +9,40 @@ const URL = [
   "district.tsv",
 ].join("/");
 
+export const DISPLAY_DISTRICT_IDS = [
+  "LK-11",
+  "LK-12",
+  "LK-13",
+  "LK-21",
+  "LK-23",
+  "LK-31",
+  "LK-32",
+  "LK-33",
+  "LK-61",
+  "LK-62",
+  "LK-71",
+  "LK-81",
+  "LK-91",
+  "LK-92",
+];
+
+export const DISPLAY_DISTRICT_NAMES = [
+  "Colombo",
+  "Gampaha",
+  "Kurunegala",
+  "Kandy",
+  "Kalutara",
+  "Ratnapura",
+  "Galle",
+  "Anuradhapura",
+  "Kegalle",
+  "Badulla",
+  "Matara",
+  "Puttalam",
+  "Nuwara Eliya",
+  'Hambantota',
+];
+
 export default class District {
   constructor(id, name, districtID) {
     this.id = id;
