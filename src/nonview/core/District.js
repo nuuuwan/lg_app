@@ -33,9 +33,8 @@ export const DISPLAY_DISTRICT_IDS = [
   'LK-43',
   'LK-45',
   'LK-42',
+  'LK-44',	
 ];
-
-
 
 export const DISPLAY_DISTRICT_NAMES = [
   "Colombo",
@@ -61,6 +60,7 @@ export const DISPLAY_DISTRICT_NAMES = [
   'Vavuniya',
   'Kilinochchi',
   'Mannar',
+  'Mullaitivu',
 ];
 
 export default class District {
