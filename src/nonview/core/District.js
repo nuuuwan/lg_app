@@ -28,7 +28,11 @@ export const DISPLAY_DISTRICT_IDS = [
   "LK-51",
   "LK-22",
   "LK-82",
+  'LK-72',
+  'LK-53',
 ];
+
+
 
 export const DISPLAY_DISTRICT_NAMES = [
   "Colombo",
@@ -49,6 +53,8 @@ export const DISPLAY_DISTRICT_NAMES = [
   "Batticaloa",
   "Matale",
   "Moneragala",
+  'Polonnaruwa',
+  'Trincomalee',
 ];
 
 export default class District {
