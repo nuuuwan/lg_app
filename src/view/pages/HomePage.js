@@ -12,19 +12,20 @@ import Geo from "../../nonview/core/Geo";
 const DEFAULT_LG_ID = "LG-11001";
 
 const STYLE = {
+  maxWidth: 600,
   margin: "auto",
 };
 
 const STYLE_HEADER = {
   paddingTop: 1,
   paddingBottom: 1,
+  paddingLeft: 2,
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   height: 100,
   backgroundColor: "#eee",
-  textAlign: "center",
 };
 
 const STYLE_BODY = {
@@ -41,11 +42,12 @@ const STYLE_FOOTER = {
   bottom: 0,
   width: "100%",
   height: 20,
-  textAlign: "center",
   fontSize: "50%",
 };
 
-
+const STYLE_ALERT = {
+  maxWidth: 300,
+};
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -107,18 +109,18 @@ export default class HomePage extends Component {
 
     return (
       <Box sx={STYLE} key={keyLGDependent + keyLatLngDependent}>
+        <Box style={STYLE_BODY}>{this.renderBody()}</Box>
+        <Box sx={STYLE_FOOTER}></Box>
         <Box sx={STYLE_HEADER}>
+          <Typography style={{ fontSize: "80%" }}>
+            2023 Sri Lanka Local Authority Elections
+          </Typography>
           <LGSelector
             selectedLGID={selectedLGID}
             onChangeLGID={this.onChangeLGID.bind(this)}
             latLng={latLng}
           />
-          <Typography style={{ fontSize: "80%" }}>
-            2023 Sri Lanka Local Authority Elections
-          </Typography>
         </Box>
-        <Box style={STYLE_BODY}>{this.renderBody()}</Box>
-        <Box sx={STYLE_FOOTER}></Box>
       </Box>
     );
   }

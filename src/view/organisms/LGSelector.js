@@ -1,53 +1,44 @@
 import React, { Component } from "react";
-import { Select, MenuItem, CircularProgress, Box } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  CircularProgress,
+  Box,
+  TextField,
+  Typography,
+} from "@mui/material";
 import LG from "../../nonview/core/LG";
 import District from "../../nonview/core/District";
 import { DEFAULT_FONT_FAMILY } from "../atoms/DefaultStyles";
 import { MISSING_DISTRICT_IDS } from "../../nonview/core/District";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const STYLE_DIV_DISTRICT = {
   color: "gray",
   fontSize: "50%",
 };
 
-const STYLE_SPAN_LG_NAME_ONLY = {
-  color: "black",
-};
-
 const N_DISPLAY_CLOSEST = 5;
-
-const STYLE_SPAN_LG_TYPE = STYLE_DIV_DISTRICT;
-
-const STYLE_SPAN_LG_ICON = {
-  color: "#888",
-};
-
-const STYLE_LG_ICON = {
-  height: 18,
-};
 
 const STYLE_DIV_LG = {
   verticalAlign: "bottom",
 };
 
-function LGSelectorMenuItemContent({ lg, district, selectedLGID }) {
+function LGSelectorItem({ lg, district, selectedLGID }) {
   const isSelected = selectedLGID === lg.id;
   const fontSize = isSelected ? Math.min(30, 500 / lg.name.length) : 20;
   const styleCustom = { fontSize };
   return (
     <div>
       <div style={STYLE_DIV_DISTRICT}>{district.name + " District"}</div>
-      <div style={STYLE_DIV_LG}>
-        <span style={STYLE_SPAN_LG_ICON}>
-          <lg.Icon style={STYLE_LG_ICON} />
-        </span>
-        <span style={{ ...STYLE_SPAN_LG_NAME_ONLY, ...styleCustom }}>
-          {lg.name + " "}
-        </span>
-      </div>
+      <div style={STYLE_DIV_LG}>{lg.name + " "}</div>
     </div>
   );
 }
+
+const STYLE = { zIndex: 10_000, paddingTop: 10 };
+
+const STYLE_TEXT_FIELD = { maxWidth: "95%" };
 
 export default class LGSelector extends Component {
   constructor(props) {
@@ -91,7 +82,7 @@ export default class LGSelector extends Component {
       })
     );
 
-    const districtIdx = await District.idx();
+    const districtIdx = await District.idxAll();
     this.setState({ lgList, districtIdx });
   }
 
@@ -102,33 +93,70 @@ export default class LGSelector extends Component {
     }
 
     const { selectedLGID, onChangeLGID } = this.props;
+    const selectedLG = lgList.filter((lg) => lg.id === selectedLGID)[0];
+    const selectedDistrict = districtIdx[selectedLG.districtID];
 
-    const onChange = function (e) {
-      const newLGID = e.target.value;
+    const onChange = function (_, value) {
+      const newLGID = value.id;
       onChangeLGID(newLGID);
     };
 
     return (
-      <Box>
-        <Select
-          label="Local Authority"
-          value={selectedLGID}
+      <Box style={STYLE}>
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={lgList}
+          getOptionLabel={(lg) => lg.name}
+          value={selectedLG}
+          sx={{ width: 300 }}
           onChange={onChange}
-        >
-          {lgList.map(function (lg) {
-            const key = "menu-item-" + lg.id;
+          renderInput={function (params) {
+            return (
+              <TextField
+                {...params}
+                label="Search for your Local Authority"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                }}
+                style={STYLE_TEXT_FIELD}
+              />
+            );
+          }}
+          renderOption={function (props, lg) {
             const district = districtIdx[lg.districtID];
             return (
-              <MenuItem key={key} value={lg.id}>
-                <LGSelectorMenuItemContent
+              <li {...props}>
+                <LGSelectorItem
                   lg={lg}
                   district={district}
                   selectedLGID={selectedLGID}
                 />
-              </MenuItem>
+              </li>
             );
-          })}
-        </Select>
+          }}
+        />
+        <div>
+          <span
+            style={{
+              fontSize: "60%",
+              color: "#444",
+              fontFamily: DEFAULT_FONT_FAMILY,
+            }}
+          >
+            {selectedDistrict.name}
+          </span>
+          <span
+            style={{
+              fontSize: "60%",
+              color: "#888",
+              fontFamily: DEFAULT_FONT_FAMILY,
+            }}
+          >
+            {" District"}
+          </span>
+        </div>
       </Box>
     );
   }

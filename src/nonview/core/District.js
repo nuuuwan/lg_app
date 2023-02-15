@@ -9,13 +9,9 @@ const URL = [
   "district.tsv",
 ].join("/");
 
-export const MISSING_DISTRICT_IDS = [
- "LK-52",
-];
+export const MISSING_DISTRICT_IDS = ["LK-52"];
 
-export const MISSING_DISTRICT_NAMES = [
-  "Ampara",
-];
+export const MISSING_DISTRICT_NAMES = ["Ampara"];
 
 export default class District {
   constructor(id, name, districtID) {
@@ -37,7 +33,7 @@ export default class District {
     return dList.map((d) => District.fromDict(d));
   }
 
-  static async idx() {
+  static async idxAll() {
     const dList = await District.listAll();
     const idx = {};
     dList.forEach((e) => {

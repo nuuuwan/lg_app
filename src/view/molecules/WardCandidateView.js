@@ -20,7 +20,6 @@ const STYLE_INNER = {
   padding: 5,
 };
 
-
 export default function WardCandidateView({ wardNum, ward, partyNameToNames }) {
   const partyNames = Party.sortPartyNames(Object.keys(partyNameToNames));
 
@@ -41,7 +40,10 @@ export default function WardCandidateView({ wardNum, ward, partyNameToNames }) {
                   <PartyView partyName={partyName} />
                 </td>,
                 <td key={key + "name"}>
-                  <CandidateNameList names={names} style={{ backgroundColor }} />
+                  <CandidateNameList
+                    names={names}
+                    style={{ backgroundColor }}
+                  />
                 </td>,
               ];
             })}
