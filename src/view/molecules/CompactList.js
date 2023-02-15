@@ -1,7 +1,6 @@
 import React from "react";
 
-const STYLE_TABLE = {  
-};
+const STYLE_TABLE = {};
 
 const STYLE_TR = {
   border: "none",

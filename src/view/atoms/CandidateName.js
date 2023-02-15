@@ -1,8 +1,7 @@
 import React from "react";
-import {DEFAULT_FONT_FAMILY} from "./DefaultStyles";
+import { DEFAULT_FONT_FAMILY } from "./DefaultStyles";
 import PersonName from "../../nonview/core/PersonName";
 import "./Clickable.css";
-
 
 const STYLE_FIRST_NAMES = {
   color: "#888",

@@ -32,7 +32,10 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
     return wardA.wardName.localeCompare(wardB.wardName);
   });
 
-  const renderedList = sortedEntries.map(function ([wardNum, partyNameToNames]) {
+  const renderedList = sortedEntries.map(function ([
+    wardNum,
+    partyNameToNames,
+  ]) {
     const key = "ward-" + wardNum;
     const ward = wardIdx[wardNum];
     return (
@@ -45,17 +48,19 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
     );
   });
 
-  const sourceURL = "https://eservices.elections.gov.lk/pages/ec_ct_KYC_LGA.aspx"
+  const sourceURL =
+    "https://eservices.elections.gov.lk/pages/ec_ct_KYC_LGA.aspx";
   const link = <a href={sourceURL}>{sourceURL}</a>;
   return (
-    <Box>      
+    <Box>
       {renderedList}
-      <Alert severity="info">
-        This app uses data from {link}. 
-      </Alert>
+      <Alert severity="info">This app uses data from {link}.</Alert>
       <Alert severity="warning">
-        As of now, this app only shows the candidates for the 12 most populous districts in Sri Lanka (Colombo, Gampaha, Kurunegala, Kandy, Kalutara, Ratnapura, Galle, Anuradhapura, Kegalle, Badulla, Matara and Puttalam). Stay tuned for updates.
+        As of now, this app only shows the candidates for the 12 most populous
+        districts in Sri Lanka (Colombo, Gampaha, Kurunegala, Kandy, Kalutara,
+        Ratnapura, Galle, Anuradhapura, Kegalle, Badulla, Matara and Puttalam).
+        Stay tuned for updates.
       </Alert>
     </Box>
-  )
+  );
 }

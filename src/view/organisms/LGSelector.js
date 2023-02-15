@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  Select,
-  MenuItem,
-  CircularProgress,
-  Box,  
-} from "@mui/material";
+import { Select, MenuItem, CircularProgress, Box } from "@mui/material";
 import LG from "../../nonview/core/LG";
 import District from "../../nonview/core/District";
 import { DEFAULT_FONT_FAMILY } from "../atoms/DefaultStyles";

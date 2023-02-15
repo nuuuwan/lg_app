@@ -11,7 +11,6 @@ const STYLE_WARD_NUM = {
   color: "#888",
   padding: 3,
   paddingLeft: 20,
-  
 };
 
 const STYLE_WARD_NAME_ONLY = {
@@ -28,14 +27,15 @@ export default function WardName({ ward }) {
   if (parseInt(ward.wardNum) === WARD_NUM_PR_LIST) {
     return (
       <div>
-      <div style={STYLE_WARD_NAME_ONLY}>
-        <ward.Icon style={STYLE_ICON} />
-        {ward.wardName}
+        <div style={STYLE_WARD_NAME_ONLY}>
+          <ward.Icon style={STYLE_ICON} />
+          {ward.wardName}
+        </div>
+        <div style={STYLE_WARD_NUM}>
+          Candidates who are eligible to be elected via Proportional
+          Representation
+        </div>
       </div>
-      <div style={STYLE_WARD_NUM}>
-          Candidates who are eligible to be elected via Proportional Representation
-      </div>      
-    </div>
     );
   }
 
@@ -53,8 +53,9 @@ export default function WardName({ ward }) {
         {ward.wardName}
       </div>
       <div style={STYLE_WARD_NUM}>
-          Ward{" No. " + ward.wardNum + " · "}{memberText}
-      </div>      
+        Ward{" No. " + ward.wardNum + " · "}
+        {memberText}
+      </div>
     </div>
   );
 }

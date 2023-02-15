@@ -41,7 +41,7 @@ const STYLE_FOOTER = {
   position: "fixed",
   bottom: 0,
   width: "100%",
-  height: 20,  
+  height: 20,
   textAlign: "center",
   fontSize: "50%",
 };
@@ -117,8 +117,7 @@ export default class HomePage extends Component {
           </Typography>
         </Box>
         <Box style={STYLE_BODY}>{this.renderBody()}</Box>
-        <Box sx={STYLE_FOOTER}>          
-        </Box>
+        <Box sx={STYLE_FOOTER}></Box>
       </Box>
     );
   }
