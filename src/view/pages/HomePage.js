@@ -12,7 +12,6 @@ import Geo from "../../nonview/core/Geo";
 const DEFAULT_LG_ID = "LG-11001";
 
 const STYLE = {
-  maxWidth: 400,
   margin: "auto",
 };
 
@@ -45,6 +44,8 @@ const STYLE_FOOTER = {
   textAlign: "center",
   fontSize: "50%",
 };
+
+
 
 export default class HomePage extends Component {
   constructor(props) {

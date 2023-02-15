@@ -74,7 +74,7 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       {renderedList}
       <br />
 
-      <Alert severity="info">
+      <Alert severity="info" >
         This app uses data from {link}. The source has some spelling and other
         errors.
         <br />
@@ -84,7 +84,7 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       </Alert>
       <br />
 
-      <Alert severity="warning">
+      <Alert severity="warning" >
         As of now, the App shows candiates for all Administrative Districts, 
         except Ampara (for which data is not available).
         <br />
