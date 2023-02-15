@@ -2,7 +2,6 @@ import React from "react";
 import WardCandidateView from "./WardCandidateView";
 import { WARD_NUM_PR_LIST } from "../../nonview/core/Ward";
 import { Box, Alert, Button } from "@mui/material";
-import { DISPLAY_DISTRICT_NAMES } from "../../nonview/core/District";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
 export default function LGCandidateView({ candidateList, wardIdx }) {
@@ -57,9 +56,7 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       {sourceURL}
     </a>
   );
-  const displayDistrictNamesStr = DISPLAY_DISTRICT_NAMES.join(", ");
-  const nDisplayDistricts = DISPLAY_DISTRICT_NAMES.length;
-
+  
   const authorURL = "https://twitter.com/nuuuwan";
   const author_link = (
     <a href={authorURL} target="_blank" rel="noreferrer">
@@ -88,9 +85,8 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       <br />
 
       <Alert severity="warning">
-        As of now, this app only shows the candidates for the{" "}
-        {nDisplayDistricts}/25 most populous districts in Sri Lanka (
-        {displayDistrictNamesStr}).
+        As of now, the App shows candiates for all Administrative Districts, 
+        except Ampara (for which data is not available).
         <br />
         <br />
         If you have used the app before, you might need to refresh the app

@@ -3,7 +3,7 @@ import { Select, MenuItem, CircularProgress, Box } from "@mui/material";
 import LG from "../../nonview/core/LG";
 import District from "../../nonview/core/District";
 import { DEFAULT_FONT_FAMILY } from "../atoms/DefaultStyles";
-import { DISPLAY_DISTRICT_IDS } from "../../nonview/core/District";
+import { MISSING_DISTRICT_IDS } from "../../nonview/core/District";
 
 const STYLE_DIV_DISTRICT = {
   color: "gray",
@@ -59,7 +59,7 @@ export default class LGSelector extends Component {
     const { latLng } = this.props;
     const lgListRaw = await LG.listAll();
     const lgListFiltered = lgListRaw.filter(function (lg) {
-      return DISPLAY_DISTRICT_IDS.includes(lg.districtID);
+      return !MISSING_DISTRICT_IDS.includes(lg.districtID);
     });
 
     let lgListRemainder;
