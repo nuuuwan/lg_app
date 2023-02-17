@@ -3,6 +3,9 @@ import WardCandidateView from "./WardCandidateView";
 import { WARD_NUM_PR_LIST } from "../../nonview/core/Ward";
 import { Box, Alert, Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import {STYLE} from "../atoms/DefaultStyles"
+import {LAST_UPDATED} from "../../nonview/core/Version"
+import { SignalCellularConnectedNoInternet3BarOutlined } from "@mui/icons-material";
 
 export default function LGCandidateView({ candidateList, wardIdx }) {
   const idx = candidateList.reduce(function (idx, candidate) {
@@ -69,12 +72,15 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
     window.location.reload();
   };
 
+  const codeURL = "https://github.com/nuuuwan/lg_app";
+  const codeLink = <a href={codeURL}  target="_blank" rel="noreferrer">{codeURL}</a> 
+
   return (
     <Box>
       {renderedList}
       <br />
 
-      <Alert severity="info">
+      <Alert severity="info" sx={STYLE}>
         This app uses data from {link}. The source has some spelling and other
         errors.
         <br />
@@ -84,7 +90,7 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       </Alert>
       <br />
 
-      <Alert severity="warning">
+      <Alert severity="warning" sx={STYLE}>
         As of now, the App shows candiates for all Administrative Districts,
         except Ampara (for which data is not available).
         <br />
@@ -101,6 +107,14 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
           Refresh App
         </Button>
       </Alert>
-    </Box>
+      <br />
+
+      <Alert severity="info" sx={STYLE}>
+        Last updated  {LAST_UPDATED}
+        <br/>
+        <br/>
+        Code: {codeLink}
+    </Alert>
+    </Box>  
   );
 }

@@ -9,27 +9,27 @@ import LG from "../../nonview/core/LG";
 import LGSelector from "../organisms/LGSelector";
 import Geo from "../../nonview/core/Geo";
 
+import {STYLE} from "../atoms/DefaultStyles"
+
 const DEFAULT_LG_ID = "LG-11001";
 
-const STYLE = {
-  maxWidth: 600,
-  margin: "auto",
-};
 
 const STYLE_HEADER = {
-  paddingTop: 1,
-  paddingBottom: 1,
-  paddingLeft: 2,
   position: "fixed",
   top: 0,
   left: 0,
   width: "100%",
   height: 100,
+
+  paddingTop: 1,
+  paddingBottom: 1,
+  paddingLeft: "5%",
+    
   backgroundColor: "#eee",
 };
 
 const STYLE_BODY = {
-  paddingLeft: 20,
+  paddingLeft: "10%",
   position: "fixed",
   top: 135,
   bottom: 30,
@@ -108,18 +108,20 @@ export default class HomePage extends Component {
     const keyLatLngDependent = "latlng-dependent-" + latLng;
 
     return (
-      <Box sx={STYLE} key={keyLGDependent + keyLatLngDependent}>
+      <Box key={keyLGDependent + keyLatLngDependent}>
         <Box style={STYLE_BODY}>{this.renderBody()}</Box>
         <Box sx={STYLE_FOOTER}></Box>
         <Box sx={STYLE_HEADER}>
-          <Typography style={{ fontSize: "80%" }}>
-            2023 Sri Lanka Local Authority Elections
-          </Typography>
-          <LGSelector
-            selectedLGID={selectedLGID}
-            onChangeLGID={this.onChangeLGID.bind(this)}
-            latLng={latLng}
-          />
+          <Box sx={STYLE}>
+            <Typography style={{ fontSize: "80%" }}>
+              2023 Sri Lanka Local Authority Elections
+            </Typography>
+            <LGSelector
+              selectedLGID={selectedLGID}
+              onChangeLGID={this.onChangeLGID.bind(this)}
+              latLng={latLng}
+            />
+          </Box>
         </Box>
       </Box>
     );
