@@ -110,7 +110,7 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       <br />
 
       <Alert severity="info" sx={STYLE}>
-        Last updated  {LAST_UPDATED}
+        Your version of the app was last updated on {LAST_UPDATED}.
         <br/>
         <br/>
         Code: {codeLink}
