@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.55339b70.css","mappings":"AAAA,WACE,cACF,CAEA,iBACE,wBACF","sources":["view/atoms/Clickable.css"],"sourcesContent":[".clickable {\n  cursor: pointer;\n}\n\n.clickable:hover {\n  background-color: #f8f8f8;\n}\n"],"names":[],"sourceRoot":""}
