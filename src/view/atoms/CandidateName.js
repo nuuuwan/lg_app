@@ -27,7 +27,7 @@ export default function CandidateName({ name }) {
   const lastName = personName.lastName.toUpperCase();
 
   const onClick = function () {
-    const search_query = `${name} Sri Lanka`;
+    const search_query = `"${name}" Sri Lanka`;
     const url = `https://www.google.com/search?q=${search_query}`;
     window.open(url, "_blank");
   };
