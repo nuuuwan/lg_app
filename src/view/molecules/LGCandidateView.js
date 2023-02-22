@@ -3,8 +3,8 @@ import WardCandidateView from "./WardCandidateView";
 import { WARD_NUM_PR_LIST } from "../../nonview/core/Ward";
 import { Box, Alert, Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import {STYLE} from "../atoms/DefaultStyles"
-import {LAST_UPDATED} from "../../nonview/core/Version"
+import { STYLE } from "../atoms/DefaultStyles";
+import { LAST_UPDATED } from "../../nonview/core/Version";
 import { SignalCellularConnectedNoInternet3BarOutlined } from "@mui/icons-material";
 
 export default function LGCandidateView({ candidateList, wardIdx }) {
@@ -73,7 +73,11 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
   };
 
   const codeURL = "https://github.com/nuuuwan/lg_app";
-  const codeLink = <a href={codeURL}  target="_blank" rel="noreferrer">{codeURL}</a> 
+  const codeLink = (
+    <a href={codeURL} target="_blank" rel="noreferrer">
+      {codeURL}
+    </a>
+  );
 
   return (
     <Box>
@@ -91,8 +95,9 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
       <br />
 
       <Alert severity="warning" sx={STYLE}>
-        As of now, the App shows candiates for all Administrative Districts,
-        except Ampara (for which data is not available).
+        The App shows candidates for
+        <strong>all </strong>Administrative Districts, including{" "}
+        <strong>Ampara</strong>, which was not available in previous versions.
         <br />
         <br />
         If you have used the app before, you might need to refresh the app
@@ -111,10 +116,10 @@ export default function LGCandidateView({ candidateList, wardIdx }) {
 
       <Alert severity="info" sx={STYLE}>
         Your version of the app was last updated on {LAST_UPDATED}.
-        <br/>
-        <br/>
+        <br />
+        <br />
         Code: {codeLink}
-    </Alert>
-    </Box>  
+      </Alert>
+    </Box>
   );
 }

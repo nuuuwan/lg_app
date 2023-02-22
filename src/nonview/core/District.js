@@ -9,9 +9,9 @@ const URL = [
   "district.tsv",
 ].join("/");
 
-export const MISSING_DISTRICT_IDS = ["LK-52"];
+export const MISSING_DISTRICT_IDS = [];
 
-export const MISSING_DISTRICT_NAMES = ["Ampara"];
+export const MISSING_DISTRICT_NAMES = [];
 
 export default class District {
   constructor(id, name, districtID) {

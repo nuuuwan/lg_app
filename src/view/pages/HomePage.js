@@ -9,10 +9,9 @@ import LG from "../../nonview/core/LG";
 import LGSelector from "../organisms/LGSelector";
 import Geo from "../../nonview/core/Geo";
 
-import {STYLE} from "../atoms/DefaultStyles"
+import { STYLE } from "../atoms/DefaultStyles";
 
 const DEFAULT_LG_ID = "LG-11001";
-
 
 const STYLE_HEADER = {
   position: "fixed",
@@ -24,7 +23,7 @@ const STYLE_HEADER = {
   paddingTop: 1,
   paddingBottom: 1,
   paddingLeft: "5%",
-    
+
   backgroundColor: "#eee",
 };
 
